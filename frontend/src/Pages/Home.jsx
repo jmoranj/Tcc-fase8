@@ -1,28 +1,43 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import Showcase from "../Components/Showcase"
 import Top from "../Components/Top"
 import Product from "../Components/Product"
 
-import Examples from "../data/Examples"
+import GetProducts from "../functions/GetProducts"
 
-export default function Page(){
+export default function Home(){
+
+    const [ products, defineProducts ] = useState([])
+
+    useEffect(function(){
+
+
+        GetProducts()
+        
+            .then(function(results){
+                defineProducts(results)
+            })
+
+    }, [products])
+
     return<>
         <Top/>
         
         <Showcase>
         
             {
-                Examples.map(function(product, index){
+                products.map(function(product, index){
+
                     return <Product
                         key={ index }
                         code={ product.code }
-                        image={ product.images[0] }
+                        images={ product.images }
                         name={ product.brand + " " + product.model } 
                         price={ product.price} />
                 })
+                
             }
-
         </Showcase>
     </>
 }

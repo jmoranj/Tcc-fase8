@@ -28,9 +28,10 @@ const LinkProduct = styled.a`
 `
 
 export default function Product(props){
+
     return <Model>
         <LinkProduct href={ "/product/" + props.code}>
-            <img src={props.image} alt="product pic" width={180} height={200} />
+            <img src={props.images} alt="product pic" width={180} height={200} />
             <div>
                 <ModelText> {props.name} </ModelText>
                 <ModelPrice> R$ {props.price} </ModelPrice>      

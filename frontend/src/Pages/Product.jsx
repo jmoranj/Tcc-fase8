@@ -1,30 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Top from "../Components/Top";
 import Viewer from "../Components/Viewer";
-    
-import Examples from "../data/Examples";
+
+import GetOneProduct from "../functions/GetOneProduct"
 
 export default function Product(){
 
     const { code } = useParams()
 
-    const productExample = Examples.find(product => product.code === code)
+    const [ product, defineProduct ] = useState({})
+
+
+    useEffect(function(){
+
+        
+
+        GetOneProduct(code)
+
+            .then(function(result){
+                defineProduct(result)
+                console.log(result);
+            })
+
+            .catch(function(error){
+                console.log(error);
+            })
+
+    }, [])
 
 
     return<>
 
         <Top/>
 
-        {productExample && Object.keys(productExample).length > 0 ?
+        { product && Object.keys(product).length > 0 ?
 
-            <Viewer product= { productExample }/>
+            <Viewer product= { product }/>  
         
         :
 
             <h1 style={{ textAlign: "center" }}> Product not found </h1>
+        }
 
-        }      
+
+
     </>
 }

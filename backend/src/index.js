@@ -1,32 +1,24 @@
 import express from "express";
 import cors from "cors";
-
-import "./Connection.js"
-import { Users } from "./Users.js"
+import "./database.js";
+import routes from "./routes.js";
 
 const server = express()
 
-server.use(cors())
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3000/cart']
+server.use(cors({
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Acesso negado por CORS'))
+        }
+    }
+}))
+
 server.use(express.json())
+server.use(routes)
 
-server.get("/", async function(req,res){
-    const results = await Users.find()
-    res.status(200).json(results)
-})
-
-server.post("/", async function(req,res){
-    try{    
-        const newUser = new Users(req.body)
-        const result = await newUser.save()
-        res.status(201).json(result)
-    }
-    catch(error){
-        console.log(error);
-        res.sendStatus(500)
-    }
-    
-})
-
-server.listen(4000, function(){
-    console.log("SERVER IS WORKING! ");
+server.listen(4000, function () {
+    console.log("Working on 4000.")
 })

@@ -10,7 +10,7 @@ const Examples = [
             "https://picsum.photos/180/200?random=2",
             "https://picsum.photos/180/200?random=3",
         ], 
-        price:"124,00",
+        price:"124.00",
         sale: false
     },
 
@@ -24,8 +24,8 @@ const Examples = [
             "https://picsum.photos/180/200?random=5",
             "https://picsum.photos/180/200?random=6",
         ], 
-        price:"124,00",
-        sale: false
+        price:"124.00",
+        sale: true
     },
 
     {   
@@ -38,8 +38,8 @@ const Examples = [
             "https://picsum.photos/180/200?random=8",
             "https://picsum.photos/180/200?random=9",
         ], 
-        price:"124,00",
-        sale: false
+        price:"124.00",
+        sale: true
     }
 
 ]

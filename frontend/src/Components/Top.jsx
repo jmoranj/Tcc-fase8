@@ -16,6 +16,12 @@ const ModelMenu = styled.div`
     padding: 8px;
 `
 
+const ModelCatalog = styled.a`
+    color: white;
+    padding: 8px 20px;
+    text-decoration: none;
+`
+
 const ModelCart = styled.a`
     color: white;
     padding: 8px 20px;
@@ -32,11 +38,15 @@ export default function Top(){
         <ModelLogo href="/">
             <img src="/favicon.png" alt="logo" height={60} width={100} />
         </ModelLogo>
-
+    
         <ModelMenu>
             
-            <ModelSale href="/promo">
-            <img src="/saleicon.png" alt="sale" height={35} width={35} />
+            <ModelCatalog href="/catalog">
+                <img src="/catalog.png" alt="catalog" height={35} width={35}/>
+            </ModelCatalog>
+
+            <ModelSale href="/sale">
+                <img src="/saleicon.png" alt="sale" height={35} width={35} />
             </ModelSale>
 
             <ModelCart href="/cart">
